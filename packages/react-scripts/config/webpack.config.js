@@ -95,6 +95,16 @@ const hasJsxRuntime = (() => {
   }
 })();
 
+const projectDir = path.resolve(fs.realpathSync(process.cwd()));
+const webpackConfigOverridePath = path.resolve(
+  projectDir,
+  'webpack.config.override.js'
+);
+
+let overrideWebpackConfig;
+if (fs.existsSync(webpackConfigOverridePath))
+  overrideWebpackConfig = require(webpackConfigOverridePath);
+
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function (webpackEnv) {
@@ -196,7 +206,7 @@ module.exports = function (webpackEnv) {
     return loaders;
   };
 
-  return {
+  let webpackConfig = {
     target: ['browserslist'],
     // Webpack noise constrained to errors and warnings
     stats: 'errors-warnings',
@@ -793,4 +803,9 @@ module.exports = function (webpackEnv) {
     // our own hints via the FileSizeReporter
     performance: false,
   };
+
+  if (typeof overrideWebpackConfig === 'function')
+    webpackConfig = overrideWebpackConfig(webpackConfig);
+
+  return webpackConfig;
 };
