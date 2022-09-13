@@ -1,7 +1,7 @@
 {
-  "name": "react-scripts",
+  "name": "@bahmanbinary/react-scripts",
   "version": "5.0.1",
-  "description": "Configuration and scripts for Create React App.",
+  "description": "Custom configuration and scripts for Connectino Create React App.",
   "repository": {
     "type": "git",
     "url": "https://github.com/facebook/create-react-app.git",
