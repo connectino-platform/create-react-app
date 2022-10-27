@@ -1,6 +1,6 @@
 {
   "name": "@bahmanbinary/react-scripts",
-  "version": "5.0.2-0",
+  "version": "5.0.2-1",
   "description": "Custom configuration and scripts for Connectino Create React App.",
   "repository": {
     "type": "git",
