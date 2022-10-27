@@ -805,7 +805,7 @@ module.exports = function (webpackEnv) {
   };
 
   if (typeof overrideWebpackConfig === 'function')
-    webpackConfig = overrideWebpackConfig(webpackConfig);
+    webpackConfig = overrideWebpackConfig(webpackConfig, { getStyleLoaders });
 
   return webpackConfig;
 };
